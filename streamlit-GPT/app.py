@@ -1,4 +1,4 @@
-from langchain_community.llms import Ollama
+from langchain_ollama import OllamaLLM
 import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -16,7 +16,7 @@ st.title("My GPT")
 input_text = st.text_input("What question do you have in mind?")
 
 # Ollama
-llm = Ollama(model="gemma2:2b")
+llm = OllamaLLM(model="gemma2:2b")
 
 output_parser = StrOutputParser()
 
