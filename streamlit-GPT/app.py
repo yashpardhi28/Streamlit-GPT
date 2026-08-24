@@ -15,18 +15,20 @@ prompt = ChatPromptTemplate.from_messages(
 st.title("My GPT")
 input_text = st.text_input("What question do you have in mind?")
 
-# Retrieve key from Streamlit Secrets
 api_key = st.secrets.get("GROQ_API_KEY")
 
 if input_text:
     if not api_key:
         st.error("Please add your GROQ_API_KEY in Streamlit App Settings -> Secrets.")
     else:
-        llm = ChatGroq(
-            model="llama-3.1-8b-instant",
-            groq_api_key=api_key
-        )
-        output_parser = StrOutputParser()
-        chain = prompt | llm | output_parser
-        response = chain.invoke({"question": input_text})
-        st.write(response)
+        try:
+            llm = ChatGroq(
+                model_name="llama-3.1-8b-instant",
+                groq_api_key=api_key.strip()
+            )
+            output_parser = StrOutputParser()
+            chain = prompt | llm | output_parser
+            response = chain.invoke({"question": input_text})
+            st.write(response)
+        except Exception as e:
+            st.error(f"Error: {e}")
