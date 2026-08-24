@@ -22,7 +22,11 @@ if input_text:
     if not api_key:
         st.error("Please add your GROQ_API_KEY in Streamlit App Settings -> Secrets.")
     else:
-        llm = ChatGroq(model="llama-3.3-70b-versatile", groq_api_key=api_key)
+        llm = ChatGroq(
+            model="llama-3.1-8b-instant",
+            groq_api_key=api_key
+        )
         output_parser = StrOutputParser()
         chain = prompt | llm | output_parser
-        st.write(chain.invoke({"question": input_text}))
+        response = chain.invoke({"question": input_text})
+        st.write(response)
