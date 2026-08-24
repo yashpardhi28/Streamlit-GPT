@@ -23,7 +23,7 @@ if input_text:
     else:
         try:
             llm = ChatGroq(
-                model_name="llama-3.1-8b-instant",
+                model_name="openai/gpt-oss-20b",
                 groq_api_key=api_key.strip()
             )
             output_parser = StrOutputParser()
