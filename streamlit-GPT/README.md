@@ -33,7 +33,12 @@ Streamlit-GPT
 │── README.md
 │── .gitignore
 ```
+## 🌐 Live Demo
 
+Try the live application here:  
+👉 **[Launch Streamlit-GPT App](https://app-gpt-appad2spt79geoesszu48rr.streamlit.app/)**
+
+---
 ## Author
 
-Aryan Pardhi
+Yash Pardhi
